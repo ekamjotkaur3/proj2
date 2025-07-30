@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ekamjot's Student Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    color: #fff;
+    background: url('bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    position: relative;
+  }
+
+  /* Optional: semi-transparent dark overlay for contrast */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5); /* dark overlay */
+    z-index: -1;
+  }
+.session-row.current {
+  font-weight: bold;
+  font-size: 1.2em;
+  /* Remove yellow background */
+  background-color: transparent; /* or use a subtle color like #f0f0f0 */
+  padding: 10px;
+  border-radius: 5px;
+  /* Optional subtle border to highlight */
+  border: 1px solid #ccc;
+}
+
+.session-row.current div {
+  margin-bottom: 6px;
+}
+
+.session-row.current span.label {
+  color: #ffd740;
+  margin-right: 8px;
+  font-weight: 600;
+}
+
+  .container {
+    padding-top: 30px;
+  }
+
+  .marquee {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 15px 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffffcc;
+    text-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+  }
+
+  .marquee span {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee-left 18s linear infinite;
+  }
+
+  @keyframes marquee-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+  }
+
+  footer.marquee {
+    border-top: 1px solid rgba(255,255,255,0.2);
+    font-size: 1rem;
+    padding: 12px 0;
+    color: #ffffffcc;
+    text-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+    text-align: center;
+  }
+
+  .glass-card {
+    background: rgba(0, 0, 0, 0.55);
+    border-radius: 16px;
+    padding: 25px 30px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    backdrop-filter: blur(12px);
+    margin-bottom: 30px;
+  }
+
+  h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #ffffff;
+    text-shadow: 0 0 6px rgba(0,0,0,0.4);
+  }
+
+  .nav-tabs {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .nav-tabs .nav-link {
+    color: #ffffffcc;
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+
+  .nav-tabs .nav-link:hover {
+    color: #fff;
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 8px 8px 0 0;
+  }
+
+  .nav-tabs .nav-link.active {
+    background-color: rgba(255,255,255,0.2);
+    color: #fff;
+    border-radius: 10px 10px 0 0;
+    font-weight: 700;
+  }
+</style>
+
+
+</head>
+<body>
+
+  <!--  Top Banner -->
+  <div class="marquee"><span id="dateBanner"></span></div>
+
+  <div class="container mt-4">
+    <!--  Main Tabs -->
+    <ul class="nav nav-tabs mb-3" id="mainTabs">
+      <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#welcome">Welcome</a></li>
+      <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#subjects">Subjects</a></li>
+      <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#timetable">Timetable</a></li>
+      <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#attendance">Attendance</a></li>
+    </ul>
+
+    <div class="tab-content">
+      <!--  Welcome Tab -->
+      <div class="tab-pane fade show active" id="welcome">
+        <div class="glass-card">
+          <h3>Welcome!</h3>
+          <p>Hello , this dashboard helps you manage your subjects, keep track of your timetable, and monitor your attendance — all in one elegant place!</p>
+        </div>
+      </div>
+
+      <!--  Subjects Tab -->
+      <div class="tab-pane fade" id="subjects">
+        <div class="glass-card">
+          <h3>Your Subjects</h3>
+          <ul class="list-group">
+            <li class="list-group-item">Artificial Intelligence</li>
+            <li class="list-group-item">Database Management Systems</li>
+            <li class="list-group-item">FLAT</li>
+            <li class="list-group-item">DAA</li>
+             <li class="list-group-item">FLAT TUT</li>
+            <li class="list-group-item">DAA TUT</li>
+            <li class="list-group-item">Statistics for Data Science</li>
+            <li class="list-group-item">Constitution of India</li>
+            <li class="list-group-item">Artificial Intelligence Lab</li>
+            <li class="list-group-item">Database Management Lab</li>
+            <li class="list-group-item">DAA Lab</li>
+            <li class="list-group-item">Mentoring Class</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Timetable Tab -->
+      <div class="tab-pane fade" id="timetable">
+        <div class="glass-card">
+          <h3>Timetable</h3>
+          <div id="timetableContainer"></div>
+
+          <!-- Extra Timetable Views -->
+          <ul class="nav nav-tabs mt-4" id="extraTimetableTabs" role="tablist">
+            <li class="nav-item">
+              <button class="nav-link active" id="day-tab" data-bs-toggle="tab" data-bs-target="#day" type="button" onclick="showFullDay()">Full Day</button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link" id="week-tab" data-bs-toggle="tab" data-bs-target="#week" type="button" onclick="showFullWeek()">Full Week</button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link" id="next-tab" data-bs-toggle="tab" data-bs-target="#next" type="button" onclick="showNextPeriod()">Next Period</button>
+            </li>
+          </ul>
+
+          <div class="tab-content p-3 border border-top-0" id="extraTimetableContent">
+            <div class="tab-pane fade show active" id="day"></div>
+            <div class="tab-pane fade" id="week"></div>
+            <div class="tab-pane fade" id="next"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 🔸 Attendance Tab -->
+      <div class="tab-pane fade" id="attendance">
+        <div class="glass-card">
+          <h3>Attendance</h3>
+
+          <!-- Subject Tab Headers -->
+          <ul class="nav nav-tabs" id="subjectTabs" role="tablist">
+  <li class="nav-item">
+    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#artificial-intelligence" type="button">
+      Artificial Intelligence
+    </button>
+  </li>
+  <li class="nav-item">
+    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#database-management-systems" type="button">
+      Database Management Systems
+    </button>
+  </li>
+  <li class="nav-item">
+    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#flat" type="button">
+      FLAT
+    </button>
+  </li>
+  <li class="nav-item">
+    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#daa" type="button">
+      DAA
+    </button>
+  </li>
+ <li class="nav-item">
+    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#flat-tut" type="button">
+      FLAT TUT
+    </button>
+  </li>
+  <li class="nav-item">
+    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#daa-tut" type="button">
+      DAA TUT
+    </button>
+  </li>
+
+  <li class="nav-item">
+    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#statistics-for-data-science" type="button">
+      Statistics for Data Science
+    </button>
+  </li>
+  <li class="nav-item">
+    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#constitution-of-india" type="button">
+      Constitution of India
+    </button>
+  </li>
+  <li class="nav-item">
+    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#artificial-intelligence-lab" type="button">
+      Artificial Intelligence Lab
+    </button>
+  </li>
+  <li class="nav-item">
+    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#database-management-lab" type="button">
+      Database Management Lab
+    </button>
+  </li>
+  <li class="nav-item">
+    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#daa-lab" type="button">
+      DAA Lab
+    </button>
+  </li>
+  <li class="nav-item">
+    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#mentoring-class" type="button">
+      Mentoring Class
+    </button>
+  </li>
+</ul>
+
+          <!-- Subject Tab Content Panes -->
+         <div class="tab-content mt-3">
+  <div class="tab-pane fade show active" id="artificial-intelligence"></div>
+  <div class="tab-pane fade" id="database-management-systems"></div>
+  <div class="tab-pane fade" id="flat"></div>
+  <div class="tab-pane fade" id="daa"></div>
+  <div class="tab-pane fade" id="flat-tut"></div>
+  <div class="tab-pane fade" id="daa-tut"></div>
+  <div class="tab-pane fade" id="statistics-for-data-science"></div>
+  <div class="tab-pane fade" id="constitution-of-india"></div>
+  <div class="tab-pane fade" id="artificial-intelligence-lab"></div>
+  <div class="tab-pane fade" id="database-management-lab"></div>
+  <div class="tab-pane fade" id="daa-lab"></div>
+  <div class="tab-pane fade" id="mentoring-class"></div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🔹 Footer -->
+  <div class="marquee"><span>Made by Ekamjot Kaur </span></div>
+
+</body>
+<!-- JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+ const timetable = {
+  "Monday": [
+    ["08:30", "No class", "No venue"],
+    ["09:30", "No class", "No venue"],
+    ["10:30", "No class", "No venue"],
+    ["11:30", "No class", "No venue"],
+    ["12:30", "Artificial Intelligence", "G17"],
+    ["13:30", "DAA", "G15"],
+    ["14:30", "FLAT TUT", "PL LAB"],
+    ["15:30", "Mentoring Class", "S214"]
+  ],
+  "Tuesday": [
+    ["08:30", "DAA", "G15"],
+    ["09:30", "Artificial Intelligence", "G17"],
+    ["10:30", "Database Management Systems", "G16"],
+    ["11:30", "No class", "No venue"],
+    ["12:30", "Constitution of India", "G16"],
+    ["13:30", "FLAT", "S214"],
+    ["14:30", "Statistics for Data Science", "G14"]
+  ],
+  "Wednesday": [
+    ["08:30", "DAA TUT", "G17"],
+    ["09:30", "Database Management Systems", "G16"],
+    ["10:30", "FLAT TUT", "G14"],
+    ["11:30", "No class", "No venue"],
+    ["12:30", "Database Management Lab", "SL-3"],
+    ["13:30", "Database Management Lab", "SL-3"],
+    ["14:30", "Statistics for Data Science", "G15"],
+    ["15:30", "DAA", "S214"]
+
+  ],
+  "Thursday": [
+    ["08:30", "FLAT", "G17"],
+    ["09:30", "Artificial Intelligence", "G17"],
+    ["10:30", "Statistics for Data Science", "G14"],
+    ["11:30", "No class", "No venue"],
+    ["12:30", "Constitution of India", "G16"],
+    ["13:30", "No class", "No venue"],
+    ["14:30", "Artificial Intelligence Lab", "SL-1"],
+    ["15:30", "Artificial Intelligence Lab", "SL-1"]
+  ],
+  "Friday": [
+    ["08:30", "No class", "No venue"],
+    ["09:30", "No class", "No venue"],
+    ["10:30", "No class", "No venue"],
+    ["11:30", "No class", "No venue"],
+    ["12:30", "DAA Lab", "OS LAB"],
+    ["13:30", "DAA Lab", "OS LAB"],
+    ["14:30", "Database Management Systems", "S218"],
+    ["15:30", "FLAT", "G18"]
+  ]
+};
+
+  function toMinutes(hm){
+    const [h, m] = hm.split(":").map(Number);
+    return h * 60 + m;
+  }
+
+  // Mark attendance or cancellation and update localStorage
+  function mark(id, subject, status){
+    localStorage.setItem(id, status);
+
+    // Update attendance only for present/absent, not for cancelled or empty
+    if(status === "present" || status === "absent"){
+      const totalKey = `T-${subject}`;
+      const attKey = `A-${subject}`;
+      let total = Number(localStorage.getItem(totalKey)) || 0;
+      let att = Number(localStorage.getItem(attKey)) || 0;
+
+      // Only count once per session
+      if(!localStorage.getItem(id + "-counted")){
+        total++;
+        if(status === "present") att++;
+        localStorage.setItem(totalKey, total);
+        localStorage.setItem(attKey, att);
+        localStorage.setItem(id + "-counted", "yes");
+      }
+    }
+
+    renderAttendance();
+  }
+function formatTime(h, m){
+  let ampm = h >= 12 ? "p.m." : "a.m.";
+  let hour12 = h % 12;
+  if(hour12 === 0) hour12 = 12;
+  return `${hour12}:${m.toString().padStart(2,'0')} ${ampm}`;
+}
+
+function showFullDay(){
+  const now = new Date();
+  const day = now.toLocaleDateString('en-US', { weekday: 'long' });
+  const cont = document.getElementById('day');
+  if(!timetable[day]){
+    cont.innerHTML = `<p>No classes scheduled for today (${day}).</p>`;
+    return;
+  }
+  let html = `<ul class="list-group">`;
+  timetable[day].forEach(([time, subject, room])=>{
+    let [h,m] = time.split(':').map(Number);
+    let endH = h + 1;
+    let timeStr = `${formatTime(h,m)} - ${formatTime(endH,m)}`;
+    html += `<li class="list-group-item"><strong>${timeStr}</strong><br>${subject}<br><em>${room}</em></li>`;
+  });
+  html += `</ul>`;
+  cont.innerHTML = html;
+}
+
+function showFullWeek(){
+  const cont = document.getElementById('week');
+  let html = ``;
+  const days = ["Monday","Tuesday","Wednesday","Thursday","Friday"];
+  days.forEach(day=>{
+    if(!timetable[day]){
+      html += `<h6>${day}</h6><p>No classes scheduled.</p>`;
+    } else {
+      html += `<h6>${day}</h6><ul class="list-group mb-3">`;
+      timetable[day].forEach(([time, subject, room])=>{
+        let [h,m] = time.split(':').map(Number);
+        let endH = h + 1;
+        let timeStr = `${formatTime(h,m)} - ${formatTime(endH,m)}`;
+        html += `<li class="list-group-item"><strong>${timeStr}</strong><br>${subject}<br><em>${room}</em></li>`;
+      });
+      html += `</ul>`;
+    }
+  });
+  cont.innerHTML = html;
+}
+
+function showNextPeriod(){
+  const now = new Date();
+  const day = now.toLocaleDateString('en-US', { weekday: 'long' });
+  const minutesNow = now.getHours() * 60 + now.getMinutes();
+  const cont = document.getElementById('next');
+
+  if(!timetable[day]){
+    cont.innerHTML = `<p>No classes today (${day}).</p>`;
+    return;
+  }
+
+  const nextSession = timetable[day].find(([time]) => toMinutes(time) > minutesNow);
+
+  if(!nextSession){
+    cont.innerHTML = `<p>No upcoming periods today.</p>`;
+    return;
+  }
+
+  const [time, subject, room] = nextSession;
+  let [h,m] = time.split(":").map(Number);
+  let endH = h + 1;
+  let timeStr = `${formatTime(h,m)} - ${formatTime(endH,m)}`;
+
+  cont.innerHTML = `
+    <div class="session-row">
+      <div><span class="label">Time:</span> ${timeStr}</div>
+      <div><span class="label">Subject:</span> ${subject}</div>
+      <div><span class="label">Venue:</span> ${room}</div>
+    </div>
+  `;
+}
+
+
+  function renderTimetable(){
+    const cont = document.getElementById("timetableContainer");
+    cont.innerHTML = ""; // Clear old content
+
+    const now = new Date();
+    const day = now.toLocaleDateString('en-US', { weekday: 'long' });
+    const minutesNow = now.getHours() * 60 + now.getMinutes();
+
+    if (!timetable[day]) {
+      cont.innerHTML = `<p>No classes today.</p>`;
+      return;
+    }
+
+    const current = timetable[day].find(([time]) => {
+      const start = toMinutes(time);
+      return minutesNow >= start && minutesNow < start + 60;
+    });
+
+    if (current) {
+      const [time, subject, room] = current;
+      const id = `${day}-${time}`;
+      const prev = localStorage.getItem(id) || "";
+
+      // Calculate end time string (add 60 mins)
+      let [h,m] = time.split(":").map(Number);
+      let endH = h + 1;
+
+      // AM/PM formatting helper
+      function formatHour(hr){
+        if(hr === 0) return 12;
+        if(hr > 12) return hr - 12;
+        return hr;
+      }
+      function getAMPM(hr){
+        return hr >= 12 ? "p.m." : "a.m.";
+      }
+
+      const startHourFormatted = formatHour(h);
+      const endHourFormatted = formatHour(endH);
+      const ampmStart = getAMPM(h);
+      const ampmEnd = getAMPM(endH);
+
+      // If AM/PM different, show both, else just one at end
+      let timeStr = `${startHourFormatted}:${m.toString().padStart(2,'0')} - ${endHourFormatted}:${m.toString().padStart(2,'0')} ${ampmEnd}`;
+      if(ampmStart !== ampmEnd){
+        timeStr = `${startHourFormatted}:${m.toString().padStart(2,'0')} ${ampmStart} - ${endHourFormatted}:${m.toString().padStart(2,'0')} ${ampmEnd}`;
+      }
+
+      cont.innerHTML = `
+  <div class="session-row current" id="${id}">
+    <div><span class="label">Time:</span> ${timeStr}</div>
+    <div><span class="label">Subject:</span> ${subject}</div>
+    <div><span class="label">Venue:</span> ${room}</div>
+      </div>`;
+
+    } else {
+      cont.innerHTML = `<p>No class currently happening.</p>`;
+    }
+  }function autoUpdateTotalLectures() {
+  const now = new Date();
+  const day = now.toLocaleDateString('en-US', { weekday: 'long' });
+  if (!timetable[day]) return;
+
+  const currentMinutes = now.getHours() * 60 + now.getMinutes();
+
+  timetable[day].forEach(([time, subject]) => {
+    const startMinutes = toMinutes(time);
+    const id = `${day}-${time}`;
+    const totalKey = `T-${subject}`;
+
+    // If time has passed (class is over) and wasn't already counted
+    if (currentMinutes >= startMinutes + 60 && !localStorage.getItem(id + "-counted-auto")) {
+      // Only count if subject is not "No class"
+      if (subject !== "No class") {
+        let total = Number(localStorage.getItem(totalKey)) || 0;
+        total++;
+        localStorage.setItem(totalKey, total);
+        localStorage.setItem(id + "-counted-auto", "yes");
+        renderAttendance(); // Optional: update UI if user is on attendance tab
+      }
+    }
+  });
+}
+
+
+  function renderAttendance(){
+    const cont = document.getElementById("attendanceStats");
+    cont.innerHTML = "";
+    const subjects = new Set(Object.values(timetable).flat().map(s=>s[1]));
+    subjects.forEach(subject => {
+      const total = Number(localStorage.getItem(`T-${subject}`)) || 0;
+      const att = Number(localStorage.getItem(`A-${subject}`)) || 0;
+      const pct = total ? ((att / total) * 100).toFixed(1) : 0;
+      cont.innerHTML += `<div class="attendance-stat"><strong>${subject}:</strong> ${att}/${total} (${pct}%)</div>`;
+    });
+  } // Constants
+const startDate = new Date(2025, 7, 1); // July is month 6 (zero-based)
+const subjects = [
+  "Artificial Intelligence",
+  "Database Management Systems",
+  "FLAT",
+  "DAA",
+  "FLAT TUT",
+  "DAA TUT",
+  "Statistics for Data Science",
+  "Constitution of India",
+  "Artificial Intelligence Lab",
+  "Database Management Lab",
+  "DAA Lab",
+  "Mentoring Class"
+];
+
+// Initialize attendance storage - no default present/absent, just create keys as "pending"
+function initAttendance() {
+  const today = new Date();
+  for (let d = new Date(startDate); d <= today; d.setDate(d.getDate() + 1)) {
+    const dayName = d.toLocaleDateString('en-US', { weekday: 'long' });
+    const dateKey = d.toISOString().slice(0, 10);
+    if (!timetable[dayName]) continue;
+    timetable[dayName].forEach(([time, subject]) => {
+      if (!subjects.includes(subject)) return;
+      const id = `${dateKey}-${time}-${subject}`;
+
+      // If attendance status not set, mark as pending (empty string)
+      if (localStorage.getItem(id) === null) {
+        localStorage.setItem(id, "pending");
+      }
+
+      // Default cancelled: false if not set
+      if (localStorage.getItem(id + "-cancelled") === null) {
+        localStorage.setItem(id + "-cancelled", "false");
+      }
+    });
+  }
+}
+
+// Save attendance status when user marks present/absent
+function setAttendance(id, status) {
+  localStorage.setItem(id, status);
+  refreshAll();
+}
+
+// Toggle cancel checkbox handler
+function toggleCancel(id, checkbox) {
+  localStorage.setItem(id + "-cancelled", checkbox.checked ? "true" : "false");
+  refreshAll();
+}
+// Render attendance UI for a subject with mark options + cancel checkbox
+function renderSubject(subject) {
+  const pane = document.getElementById(normalize(subject));
+  if (!pane) return;
+  pane.innerHTML = '';
+
+  const today = new Date();
+  let attended = 0;
+  let total = 0;
+
+  let tableHTML = `
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Date & Time</th>
+          <th>Attendance</th>
+          <th>Cancelled</th>
+        </tr>
+      </thead>
+      <tbody>
+  `;
+
+  for (let d = new Date(startDate); d <= today; d.setDate(d.getDate() + 1)) {
+    const dayName = d.toLocaleDateString('en-US', { weekday: 'long' });
+    const dateKey = d.toISOString().slice(0, 10);
+    if (!timetable[dayName]) continue;
+
+    timetable[dayName].forEach(([time, subj]) => {
+      if (subj !== subject) return;
+
+      const id = `${dateKey}-${time}-${subject}`;
+      let status = localStorage.getItem(id) || "pending";
+      const cancelled = localStorage.getItem(id + "-cancelled") === "true";
+
+      // If attendance pending and not cancelled, mark as absent by default
+      if (status === "pending" && !cancelled) {
+        status = "absent";
+        localStorage.setItem(id, status);
+      }
+
+      if (!cancelled) {
+        total++;
+        if (status === "present") attended++;
+      }
+
+      // Attendance buttons with current status highlighted
+      const presentChecked = status === "present" ? "btn-primary" : "btn-outline-primary";
+      const absentChecked = status === "absent" ? "btn-danger" : "btn-outline-danger";
+
+      tableHTML += `
+        <tr>
+          <td>${dateKey} @ ${time}</td>
+          <td>
+            <div class="btn-group btn-group-sm" role="group">
+              <button type="button" class="btn ${presentChecked}" onclick="setAttendance('${id}', 'present')">Present</button>
+              <button type="button" class="btn ${absentChecked}" onclick="setAttendance('${id}', 'absent')">Absent</button>
+            </div>
+          </td>
+          <td class="text-center">
+            <input type="checkbox" ${cancelled ? "checked" : ""} 
+              onchange="toggleCancel('${id}', this)" title="Mark class as cancelled">
+          </td>
+        </tr>
+      `;
+    });
+  }
+
+  tableHTML += `</tbody></table>`;
+const percentage = total ? ((attended / total) * 100).toFixed(1) : 0;
+const percentageHTML = `
+  <div class="mt-2" style="font-weight: bold;">
+    Attendance Percentage: ${percentage}%
+  </div>
+`;
+
+
+  // Summary table
+  const summaryHTML = `
+    <table class="table table-sm table-bordered w-auto mt-3">
+      <thead><tr><th>Lectures Attended</th><th>Total Lectures</th></tr></thead>
+      <tbody><tr><td>${attended}</td><td>${total}</td></tr></tbody>
+    </table>
+  `;
+
+ pane.innerHTML = tableHTML + summaryHTML + percentageHTML;
+
+}
+
+// Helpers and other code remain unchanged...
+
+// Call on page load
+initAttendance();
+refreshAll();
+setInterval(refreshAll, 60*60*1000); // hourly refresh
+
+
+// Helper: normalize subject into valid ID (dashes/lowercase)
+function normalize(str) {
+  return str.toLowerCase()
+    .replace(/ & /g, '-')
+    .replace(/ and /g, '-')
+    .replace(/\s+/g, '-')
+    .replace(/[^a-z0-9\-]/g, '');
+}
+
+// 3️⃣ Refresh all subjects
+function refreshAll() {
+  subjects.forEach(s => renderSubject(s));
+}
+
+// ⏱ Initialization
+initAttendance();
+refreshAll();
+setInterval(refreshAll, 60*60*1000); // every hour  why does this font type is chnging in notepad
+
+  function bannerDate(){
+    document.getElementById("dateBanner").textContent =
+      new Date().toLocaleDateString(undefined, { weekday:'long', month:'short', day:'numeric', year:'numeric' });
+  }
+
+  // Initialize on page load
+  bannerDate();
+  renderTimetable();
+  renderAttendance();
+  setInterval(renderTimetable, 60000); // Refresh every minute
+</script>
